@@ -25,7 +25,8 @@ public class ThreadClient extends Thread {
 		Random rand = new Random();
 		Client client = null;
 		while(true){
-			if(rand.nextFloat() < 0.5f){
+			float randN = rand.nextFloat();
+			if(randN < 0.5f){
 				client = new ClientGourmand();
 			}
 			else{
