@@ -1,0 +1,42 @@
+package edu.tplibre.magasin;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Observable;
+
+import edu.tplibre.api.Client;
+import edu.tplibre.api.MagasinCommande;
+import edu.tplibre.api.Produit;
+
+public class Magasin extends Observable implements MagasinCommande{
+	private Collection<Produit> catalogue;
+	private Collection<Client> clients;
+	
+	public Magasin(){
+		System.out.println("Hello world");
+		catalogue = new ArrayList<Produit>();
+		catalogue.add(new Produit(1, "cacao", 4.5f, 100));
+		catalogue.add(new Produit(2, "lait", 10.3f, 48));
+	}
+	
+	@Override
+	public Collection<Produit> getCatalogue(){
+		return catalogue;
+	}
+
+	@Override
+	public void passerCommande(Collection<Produit> commande) {
+		System.out.println("Commande passée");
+	}
+	
+	void setClients(Collection<Client> clients, Map<String, ?> ref){
+		System.out.println("Bind clients");
+		this.clients = clients;
+	}
+	
+	void unsetClients(Collection<Client> service){
+		System.out.println("Unbind clients");
+		this.clients = null;
+	}
+}

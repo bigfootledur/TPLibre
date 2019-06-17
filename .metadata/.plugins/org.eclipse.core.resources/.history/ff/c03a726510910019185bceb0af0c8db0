@@ -1,0 +1,31 @@
+package edu.tplibre.ihm.parts;
+
+import java.util.Random;
+
+public class ThreadClient extends Thread {
+	// Délai de pause du Thread
+	public static final int delay=5000;
+	
+	public ThreadClient(){
+		this.start();
+	}
+	
+	/**
+	 * Méthode run qui sera appelée par le Thread.start()
+	 */
+	public void run(){
+		while(true){
+			Random rand = new Random();
+			if(rand.nextInt(1) < 0.5f){
+				
+			}
+			
+			try {
+				sleep(delay);
+			}
+			catch (InterruptedException e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+}

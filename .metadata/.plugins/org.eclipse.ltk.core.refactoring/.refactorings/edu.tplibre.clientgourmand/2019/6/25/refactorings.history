@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;edu.tplibre.clientgourmand/OSGI-INF/edu.tplibre.clientgourmand&apos; to &apos;edu.tplibre.clientgourmand.xml&apos;" description="Rename resource &apos;edu.tplibre.clientgourmand&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="OSGI-INF/edu.tplibre.clientgourmand" name="edu.tplibre.clientgourmand.xml" stamp="1560778100399" updateReferences="true"/>
+</session>

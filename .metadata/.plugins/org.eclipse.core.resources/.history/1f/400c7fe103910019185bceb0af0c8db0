@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component name="edu.tplibre.clientgourmand" xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0">
+	<implementation class="edu.repairmycar.StandardGarage"/>
+	<service>
+		<provide interface="edu.carrepairapi.CarRepairer"/>
+	</service>
+</scr:component>

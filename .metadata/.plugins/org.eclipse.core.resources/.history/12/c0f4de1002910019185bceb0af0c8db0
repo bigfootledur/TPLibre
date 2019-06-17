@@ -1,0 +1,8 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+public interface MagasinCommande {
+	Collection<Produit> getCatalogue();
+	void commander()
+}

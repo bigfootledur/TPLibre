@@ -1,0 +1,7 @@
+package edu.tplibre.client;
+
+import java.util.Collection;
+
+public interface Client {
+	public Collection<Produit> getCommande();
+}

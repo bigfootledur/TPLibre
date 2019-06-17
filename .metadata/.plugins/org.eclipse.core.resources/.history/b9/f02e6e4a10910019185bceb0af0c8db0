@@ -1,0 +1,5 @@
+package edu.tplibre.ihm.parts;
+
+public class ThreadClient extends Thread {
+	
+}

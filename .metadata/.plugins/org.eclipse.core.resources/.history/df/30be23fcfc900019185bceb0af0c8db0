@@ -1,0 +1,6 @@
+package edu.tplibre.client;
+
+
+public interface Client {
+	public void getCommande();
+}

@@ -1,0 +1,19 @@
+package edu.tplibre.clientgourmand;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import edu.tplibre.client.Client;
+
+public class ClientGourmand implements Client{
+
+	@Override
+	public Collection<Integer> getCommande() {
+		return new ArrayList<Integer>() {
+		    {
+		        add(1);
+		        add(2);
+		    }
+		};
+	}
+}

@@ -1,0 +1,35 @@
+package edu.tplibre.ihm.parts;
+
+public class ThreadClient extends Thread {
+	// Délai de pause du Thread
+	public static final int delay=5000;
+	
+	public ThreadClient(){
+		this.start();
+	}
+	
+	/**
+	 * Méthode run qui sera appelée par le Thread.start()
+	 */
+	public void run(){
+		while(true){
+			if(magasinService != null) {
+				try {
+					Collection<Produit> catalogue = magasinService.getCatalogue();
+					Collection<ProduitCommande> commande = creerCommande(catalogue);
+					commander(commande);
+				}
+				catch (ProduitIndisponibleException e1) {
+					System.out.println("Commande refusée : produit indisponible");
+				}
+			}
+			
+			try {
+				sleep(delay);
+			}
+			catch (InterruptedException e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+}

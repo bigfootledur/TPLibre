@@ -1,0 +1,30 @@
+package edu.tplibre.magasin;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import edu.tplibre.api.Client;
+import edu.tplibre.api.MagasinCommande;
+import edu.tplibre.api.Produit;
+
+public class Magasin implements MagasinCommande{
+	private Collection<Produit> catalogue;
+	private Collection<Client> clients;
+	
+	public Magasin(){
+		catalogue = new ArrayList<Produit>();
+		catalogue.add(new Produit(1, "cacao", 4.5f, 100));
+		catalogue.add(new Produit(2, "lait", 10.3f, 48));
+	}
+	
+	@Override
+	public Collection<Produit> getCatalogue(){
+		return catalogue;
+	}
+
+	@Override
+	public void passerCommande(Collection<Produit> commande) {
+		// TODO Auto-generated method stub
+		
+	}
+}

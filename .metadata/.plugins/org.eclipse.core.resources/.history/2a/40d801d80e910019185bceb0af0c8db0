@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component name="edu.tplibre.magasin" xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0">
+	<implementation class="edu.tplibre.magasin.Magasin"/>
+	<service>
+		<provide interface="edu.tplibre.api.MagasinCommande"/>
+	</service>
+	<reference name="Clients"
+			   cardinality="0..n"
+			   policy="dynamic"
+			   interface="edu.tplibre.api.Client"
+			   bind="setClients"
+			   unbind="unsetClients"
+	>
+	</reference>
+</scr:component>

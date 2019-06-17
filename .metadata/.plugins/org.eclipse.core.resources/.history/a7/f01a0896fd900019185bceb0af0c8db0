@@ -1,0 +1,7 @@
+package edu.tplibre.clientgourmand;
+
+import edu.tplibre.client.Client;
+
+public class ClientGourmand implements Client{
+	
+}

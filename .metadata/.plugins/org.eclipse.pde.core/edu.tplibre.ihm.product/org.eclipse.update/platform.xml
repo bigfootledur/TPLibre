@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1560780150026" transient="true" version="3.0">
+<site enabled="true" list="TPLibreOSGI/edu.tplibre.magasin/,TPLibreOSGI/edu.tplibre.ihm/,TPLibreOSGI/edu.tplibre.clientgourmand/,TPLibreOSGI/edu.tplibre.api/" policy="USER-INCLUDE" updateable="true" url="file:/C:/tp_osgi/workspaces/">
+</site>
+</config>

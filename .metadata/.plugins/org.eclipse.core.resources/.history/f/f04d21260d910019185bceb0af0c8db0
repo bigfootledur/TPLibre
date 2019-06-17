@@ -1,0 +1,74 @@
+package edu.tplibre.ihm.parts;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
+import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.di.Persist;
+import org.eclipse.e4.ui.model.application.ui.MDirtyable;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
+
+import edu.tplibre.api.Client;
+import edu.tplibre.api.MagasinCommande;
+import edu.tplibre.clientgourmand.ClientGourmand;
+import edu.tplibre.magasin.Magasin;
+
+/**
+ * IHM permettant de visualier le catalogue du Magasin
+ *
+ */
+public class Catalogue implements Observer {
+
+	private TableViewer tableViewer;
+
+	@Inject
+	private MDirtyable dirty;
+
+	@PostConstruct
+	public void createComposite(Composite parent) {
+		parent.setLayout(new GridLayout(1, false));
+		
+		BundleContext ctx = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+		ServiceReference<MagasinCommande> magasinServices = null;
+		magasinServices = ctx.getServiceReference(MagasinCommande.class);
+		MagasinCommande magasin = ctx.getService(magasinServices);
+		((Observable)magasin).addObserver(this);
+		Collection<Client> clients = new ClientGourmand();
+		ctx.registerService(Client.class, clients, null);
+		
+		tableViewer = new TableViewer(parent);
+		tableViewer.setContentProvider(ArrayContentProvider.getInstance());
+		tableViewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
+		tableViewer.setInput(magasin.getCatalogue());
+	}
+
+	@Focus
+	public void setFocus() {
+		tableViewer.getTable().setFocus();
+	}
+
+	@Persist
+	public void save() {
+		dirty.setDirty(false);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Display.getDefault().asyncExec(new Runnable() {
+			public void run() {
+				tableViewer.refresh();
+			}
+		});
+	}
+}

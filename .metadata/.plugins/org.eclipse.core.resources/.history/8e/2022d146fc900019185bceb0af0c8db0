@@ -1,0 +1,16 @@
+package edu.tplibre.magasin;
+
+import java.util.Collection;
+
+public class Magasin {
+	private Magasin self;
+	private Collection<Produit> catalogue;
+	
+	public Magasin(){
+		System.out.println("Hello world");
+	}
+	
+	public Collection<Produit> getCatalogue(){
+		return catalogue;
+	}
+}

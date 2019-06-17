@@ -1,0 +1,10 @@
+package edu.tplibre.client;
+
+import java.util.Collection;
+
+import edu.tplibre.magasin.Magasin;
+import edu.tplibre.magasin.Produit;
+
+public interface Client {
+	public Collection<Produit> getCommande(Magasin magasin);
+}

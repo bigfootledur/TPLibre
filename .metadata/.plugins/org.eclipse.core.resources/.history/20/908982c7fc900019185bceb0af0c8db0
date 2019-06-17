@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Magasin
+Bundle-SymbolicName: edu.tplibre.magasin
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Service-Component: OSGI-INF/edu.tplibre.magasin.xml
+Export-Package: edu.tplibre.magasin
+Require-Bundle: edu.tplibre.client;bundle-version="1.0.0"
+Import-Package: edu.tplibre.client

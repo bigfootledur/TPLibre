@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;edu.tplibre.api.ProduitEIndisponibleException&apos; to &apos;ProduitIndisponibleException&apos;&#x0D;&#x0A;- Original project: &apos;edu.tplibre.api&apos;&#x0D;&#x0A;- Original element: &apos;edu.tplibre.api.ProduitEIndisponibleException&apos;&#x0D;&#x0A;- Renamed element: &apos;edu.tplibre.api.ProduitIndisponibleException&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ProduitEIndisponibleException&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;edu.tplibre.api{ProduitEIndisponibleException.java[ProduitEIndisponibleException" matchStrategy="1" name="ProduitIndisponibleException" qualified="false" references="true" similarDeclarations="false" stamp="1560783897611" textual="false" version="1.0"/>
+</session>
