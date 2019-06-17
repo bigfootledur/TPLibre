@@ -15,7 +15,7 @@ import edu.tplibre.api.ProduitIndisponibleException;
 public class Magasin extends Observable implements MagasinCommande{
 	private Collection<Produit> catalogue;
 	private Collection<Client> clients;
-	private Collection<ProduitCommande> commandesRealisees;
+	private Collection<String> commandesRealisees;
 	
 	public Magasin(){
 		System.out.println("Hello world");
@@ -24,7 +24,7 @@ public class Magasin extends Observable implements MagasinCommande{
 		catalogue.add(new Produit(2, "lait", 10.3f, 48));
 		
 		clients = new ArrayList<Client>();
-		commandesRealisees = new ArrayList<ProduitCommande>();
+		commandesRealisees = new ArrayList<String>();
 	}
 	
 	@Override
@@ -33,16 +33,20 @@ public class Magasin extends Observable implements MagasinCommande{
 	}
 	
 	@Override
-	public Collection<ProduitCommande> getProduitsCommandes() {
+	public Collection<String> getProduitsCommandes() {
 		return commandesRealisees;
 	}
 	
 	public void setClients(Client client, Map<String, ?> ref){
 		this.clients.add(client);
+		Collection<ProduitCommande> commande = client.getCommande(catalogue);
 		try {
-			passerCommande(client.getCommande(catalogue));
+			passerCommande(commande);
+			for(ProduitCommande entree : commande){
+				commandesRealisees.add(client.toString() + " : " + entree.toString());
+			}
 		} catch (ProduitIndisponibleException e) {
-			System.out.println("Un des produits commandés est indisponible");
+			System.out.println("Un des produits commandés est indisponible");			
 		}
 	}
 	
@@ -94,8 +98,6 @@ public class Magasin extends Observable implements MagasinCommande{
 		Iterator<ProduitCommande> iterateurCommande = commande.iterator();
 		while(iterateurCommande.hasNext()){
 			ProduitCommande produitCommande = iterateurCommande.next();
-			commandesRealisees.add(new ProduitCommande(produitCommande.getNumeroProduit(),
-					  produitCommande.getQuantiteCommandee()));
 			Iterator<Produit> iterateurProduits = catalogue.iterator();
 			while(iterateurProduits.hasNext()){
 				Produit produit = iterateurProduits.next();

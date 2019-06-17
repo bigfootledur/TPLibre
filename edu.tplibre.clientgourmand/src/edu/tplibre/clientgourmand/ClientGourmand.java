@@ -24,4 +24,9 @@ public class ClientGourmand implements Client{
 		}
 		return commande;
 	}
+	
+	@Override
+	public String toString(){
+		return "Client gourmand";
+	}
 }

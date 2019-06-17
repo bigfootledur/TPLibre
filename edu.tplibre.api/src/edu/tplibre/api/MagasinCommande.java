@@ -4,6 +4,6 @@ import java.util.Collection;
 
 public interface MagasinCommande {
 	Collection<Produit> getCatalogue();
-	Collection<ProduitCommande> getProduitsCommandes();
+	Collection<String> getProduitsCommandes();
 	void passerCommande(Collection<ProduitCommande> commande)  throws ProduitIndisponibleException;
 }

@@ -7,6 +7,7 @@ import org.osgi.framework.FrameworkUtil;
 
 import edu.tplibre.api.Client;
 import edu.tplibre.clientgourmand.ClientGourmand;
+import edu.tplibre.clientstandard.ClientStandard;
 
 public class ThreadClient extends Thread {
 	// Délai de pause du Thread
@@ -24,11 +25,13 @@ public class ThreadClient extends Thread {
 		Random rand = new Random();
 		Client client = null;
 		while(true){
-			if(rand.nextInt(1) < 0.5f){
+			float randN = rand.nextFloat();
+			System.out.println(randN);
+			if(randN < 0.5f){
 				client = new ClientGourmand();
 			}
 			else{
-				client = null;
+				client = new ClientStandard();
 			}
 			ctx.registerService(Client.class, client, null);
 			
