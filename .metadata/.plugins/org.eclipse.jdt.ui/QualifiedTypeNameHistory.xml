@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="edu.tplibre.client.Client"/>
+<fullyQualifiedTypeName name="edu.tplibre.magasin.Produit"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.Produit"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="edu.tplibre.magasin.Magasin"/>
+<fullyQualifiedTypeName name="java.util.Observable"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.Client"/>
+<fullyQualifiedTypeName name="edu.tplibre.clientgourmand.ClientGourmand"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.ProduitCommande"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.ProduitIndisponibleException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.MagasinCommande"/>
+<fullyQualifiedTypeName name="edu.tplibre.clientstandard.ClientStandard"/>
+</qualifiedTypeNameHistroy>

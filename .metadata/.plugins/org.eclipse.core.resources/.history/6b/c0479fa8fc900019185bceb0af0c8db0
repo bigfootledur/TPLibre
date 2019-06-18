@@ -1,7 +1,0 @@
-package edu.tplibre.client;
-
-import edu.tplibre.magasin.Magasin;
-
-public interface Client {
-	public void commander(Magasin magasin);
-}

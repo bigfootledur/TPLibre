@@ -8,15 +8,21 @@ import edu.tplibre.api.Client;
 import edu.tplibre.api.Produit;
 import edu.tplibre.api.ProduitCommande;
 
-public class ClientStandard implements Client{
+public class ClientStandard implements Client {
+
+	// Probabilité qu'un client achète un article lorsqu'il feuillette le catalogue 
+	private final float PROBABILITE_ACHAT_ARTICLE = 0.5f;
+	
+	// Seuil en dessous duquel l'article est considéré comme indisponible
+	private final int SEUIL_DISPONIBILITE_ARTICLE = 1;
 
 	@Override
 	public Collection<ProduitCommande> getCommande(Collection<Produit> catalogue) {
 		Collection<ProduitCommande> commande = new ArrayList<ProduitCommande>();
 		Random rand = new Random();
 		for(Produit produit : catalogue){
-			if (produit.estDisponible(1)){
-				if (rand.nextFloat() < 0.5f){
+			if (produit.estDisponible(SEUIL_DISPONIBILITE_ARTICLE)){
+				if (rand.nextFloat() < PROBABILITE_ACHAT_ARTICLE){
 					int quantiteDesiree = rand.nextInt(produit.getQuantiteDisponible() / 2) + 1;
 					commande.add(new ProduitCommande(produit.getId(), quantiteDesiree));
 				}
