@@ -1,0 +1,25 @@
+package edu.tplibre.fournisseur;
+
+import java.util.Collection;
+
+import edu.tplibre.api.Fournisseur;
+import edu.tplibre.api.Produit;
+
+public class FournisseurMagasin implements Fournisseur extends Observable{
+
+	Stock stock;
+	
+	public FournisseurMagasin() {
+		stock = new Stock();
+	}
+	
+	@Override
+	public void livrer(Collection<Produit> produits) {
+		stock.approvisionner(produits);
+	}
+	
+	public Collection<Produit> getStock(){
+		return stock.getCatalogue();
+	}
+
+}

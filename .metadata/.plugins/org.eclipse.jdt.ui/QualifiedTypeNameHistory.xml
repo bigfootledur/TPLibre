@@ -2,15 +2,19 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="edu.tplibre.client.Client"/>
 <fullyQualifiedTypeName name="edu.tplibre.magasin.Produit"/>
-<fullyQualifiedTypeName name="edu.tplibre.api.Produit"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="edu.tplibre.magasin.Magasin"/>
 <fullyQualifiedTypeName name="java.util.Observable"/>
 <fullyQualifiedTypeName name="edu.tplibre.api.Client"/>
 <fullyQualifiedTypeName name="edu.tplibre.clientgourmand.ClientGourmand"/>
 <fullyQualifiedTypeName name="edu.tplibre.api.ProduitCommande"/>
-<fullyQualifiedTypeName name="edu.tplibre.api.ProduitIndisponibleException"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="edu.tplibre.api.MagasinCommande"/>
 <fullyQualifiedTypeName name="edu.tplibre.clientstandard.ClientStandard"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.Produit"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.ProduitIndisponibleException"/>
+<fullyQualifiedTypeName name="edu.tplibre.api.Fournisseur"/>
 </qualifiedTypeNameHistroy>

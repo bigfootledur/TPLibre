@@ -1,0 +1,7 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+public interface FournisseurMagasin {
+	public void livrer(Collection<Produit> produits);
+}

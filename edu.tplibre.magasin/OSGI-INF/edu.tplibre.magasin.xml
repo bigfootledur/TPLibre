@@ -12,4 +12,12 @@
 			   unbind="unsetClients"
 	>
 	</reference>
+	<reference name="Fournisseur"
+			   cardinality="1..1"
+			   policy="dynamic"
+			   interface="edu.tplibre.api.Fournisseur"
+			   bind="setFournisseur"
+			   unbind="unsetFournisseur"
+	>
+	</reference>
 </scr:component>

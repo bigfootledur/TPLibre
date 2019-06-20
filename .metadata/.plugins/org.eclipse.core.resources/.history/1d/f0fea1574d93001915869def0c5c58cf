@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component name="edu.tplibre.fournisseur" xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0">
+	<implementation class="edu.tplibre.fournisseur.Fournisseur"/>
+	<service>
+		<provide interface="edu.tplibre.api.Fournisseur"/>
+	</service>
+</scr:component>

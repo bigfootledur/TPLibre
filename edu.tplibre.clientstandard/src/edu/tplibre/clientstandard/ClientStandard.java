@@ -23,7 +23,7 @@ public class ClientStandard implements Client {
 		for(Produit produit : catalogue){
 			if (produit.estDisponible(SEUIL_DISPONIBILITE_ARTICLE)){
 				if (rand.nextFloat() < PROBABILITE_ACHAT_ARTICLE){
-					int quantiteDesiree = rand.nextInt(produit.getQuantiteDisponible() / 2) + 1;
+					int quantiteDesiree = rand.nextInt((int)produit.getQuantiteDisponible() / 2) + 1;
 					commande.add(new ProduitCommande(produit.getId(), quantiteDesiree));
 				}
 			}

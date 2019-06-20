@@ -1,0 +1,78 @@
+package edu.tplibre.fournisseur;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Random;
+
+import edu.tplibre.api.Produit;
+
+public class Stock extends Thread{
+	
+	private final int quantiteApprovisionnee = 50;
+	
+	private final int delay = 5000;
+	
+	Collection<Produit> catalogue;
+	
+	public Stock() {
+		catalogue=new ArrayList<Produit>();
+		catalogue.add(new Produit(1, "cacao", 4.5f, 59));
+		catalogue.add(new Produit(2, "lait", 10.3f, 48));
+		
+		this.start();
+	}
+	
+	@Override
+	public void run() {
+		Random rand = new Random();
+		while(true){
+			try {
+				sleep(delay);
+				for (Produit produit : catalogue){
+					int quantiteDisponible = produit.getQuantiteDisponible();
+					produit.setQuantiteDisponible(quantiteDisponible + rand.nextInt(10));
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void approvisionner(Collection<Produit> produits){
+		for(Produit produit : produits){
+			if(catalogue.contains(produit)){
+				int quantiteDisponible = produit.getQuantiteDisponible();
+				produit.setQuantiteDisponible(quantiteDisponible + quantiteApprovisionnee);
+				Iterator<Produit> iter = catalogue.iterator();
+				while(iter.hasNext()){
+					Produit produitStock = iter.next();
+					if(produitStock.getId() == produit.getId()){
+						int quantiteDisponibleStock = produitStock.getQuantiteDisponible();
+						produitStock.setQuantiteDisponible(quantiteDisponibleStock - );
+					}
+				}
+				for(Produit  : catalogue){
+					
+				}
+			}
+		}
+		
+		Iterator<Produit> iterProduits = produits.iterator();
+		while(iterProduits.hasNext()){
+			Produit produit=iterProduits.next();
+			if(catalogue.contains(produit)){
+				int quantiteProduit = produit.getQuantiteDisponible();
+				int quantiteTotale=quantiteProduit+this.quantiteApprovisionnee;
+				
+				produit.setQuantiteDisponible(quantiteTotale);
+				
+			}
+		}
+	}
+
+	public Collection<Produit> getCatalogue() {
+		return catalogue;
+	}
+	
+}

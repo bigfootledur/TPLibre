@@ -23,7 +23,7 @@ public class ClientGourmand implements Client{
 		for(Produit produit : catalogue){
 			if (produit.estDisponible(SEUIL_DISPONIBILITE_ARTICLE)){
 				if (rand.nextFloat() < PROBABILITE_ACHAT_ARTICLE){
-					int quantiteDesiree = rand.nextInt(produit.getQuantiteDisponible()) + 1;
+					int quantiteDesiree = rand.nextInt(produit.getQuantiteDisponible());
 					commande.add(new ProduitCommande(produit.getId(), quantiteDesiree));
 				}
 			}

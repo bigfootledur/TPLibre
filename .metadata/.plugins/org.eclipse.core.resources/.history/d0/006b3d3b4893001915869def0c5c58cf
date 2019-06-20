@@ -1,0 +1,5 @@
+package edu.tplibre.api;
+
+public interface Fournisseur {
+	public void livrer();
+}
