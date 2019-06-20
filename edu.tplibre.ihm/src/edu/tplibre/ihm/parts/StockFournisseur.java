@@ -34,7 +34,7 @@ import edu.tplibre.api.Fournisseur;
 import edu.tplibre.api.MagasinCommande;
 
 /**
- * IHM permettant de visualier la liste des commandes réalisées par les clients
+ * IHM permettant de visualier le stock de produits du fournisseur
  *
  */
 public class StockFournisseur implements Observer {

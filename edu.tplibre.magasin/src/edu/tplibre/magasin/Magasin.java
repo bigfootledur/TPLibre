@@ -13,6 +13,10 @@ import edu.tplibre.api.Produit;
 import edu.tplibre.api.ProduitCommande;
 import edu.tplibre.api.ProduitIndisponibleException;
 
+/**
+ * Représente le magasin chez qui les clients passent des commandes
+ *
+ */
 public class Magasin extends Observable implements MagasinCommande{
 	private Collection<Produit> catalogue;
 	private Collection<Client> clients;
@@ -21,9 +25,6 @@ public class Magasin extends Observable implements MagasinCommande{
 
 	public Magasin(){
 		catalogue = new ArrayList<Produit>();
-		catalogue.add(new Produit(1, "cacao", 4.5f, 6));
-		catalogue.add(new Produit(2, "lait", 10.3f, 4));
-
 		clients = new ArrayList<Client>();
 		commandesRealisees = new ArrayList<String>();
 	}
@@ -37,39 +38,14 @@ public class Magasin extends Observable implements MagasinCommande{
 	public Collection<String> getProduitsCommandes() {
 		return commandesRealisees;
 	}
-	
-	public void setFournisseur(Fournisseur fournisseur, Map<String, ?> ref){
-		this.fournisseur = fournisseur;
-	}
-
-	public void unsetFournisseur(Fournisseur fournisseur){
-		this.fournisseur = null;
-	}
-
-	public void setClients(Client client, Map<String, ?> ref){
-		this.clients.add(client);
-		Collection<ProduitCommande> commande = client.getCommande(catalogue);
-		try {
-			passerCommande(commande);
-			for(ProduitCommande entree : commande){
-				commandesRealisees.add(client.toString() + " : " + entree.toString());
-			}
-		} catch (ProduitIndisponibleException e) {
-			System.out.println("Un des produits commandés est indisponible");			
-		}
-	}
-
-	public void unsetClients(Client client){
-		this.clients.remove(client);
-	}
 
 	@Override
 	public void passerCommande(Collection<ProduitCommande> commande) throws ProduitIndisponibleException {
-		seFournir();
 		if(!estValide(commande)){
 			throw new ProduitIndisponibleException();
 		}
 		realiserCommande(commande);
+		seFournir();
 		this.setChanged();
 		this.notifyObservers(catalogue);
 		this.notifyObservers(commandesRealisees);
@@ -86,14 +62,19 @@ public class Magasin extends Observable implements MagasinCommande{
 		Iterator<ProduitCommande> iterateurCommande = commande.iterator();
 		while(iterateurCommande.hasNext()){
 			ProduitCommande produitCommande = iterateurCommande.next();
-			Iterator<Produit> iterateurProduits = catalogue.iterator();
-			while(iterateurProduits.hasNext()){
-				Produit produit = iterateurProduits.next();
+			Iterator<Produit> iterateurCatalogue = catalogue.iterator();
+			boolean presentDansLeCatalogue = false;
+			while(iterateurCatalogue.hasNext()){
+				Produit produit = iterateurCatalogue.next();
 				if(produit.getId() == produitCommande.getNumeroProduit()){
+					presentDansLeCatalogue = true;
 					if(!produit.estDisponible(produitCommande.getQuantiteCommandee())){
 						commandeValide = false;
 					}
 				}
+			}
+			if(!presentDansLeCatalogue){
+				commandeValide = false;
 			}
 		}
 		return commandeValide;
@@ -108,12 +89,11 @@ public class Magasin extends Observable implements MagasinCommande{
 		Iterator<ProduitCommande> iterateurCommande = commande.iterator();
 		while(iterateurCommande.hasNext()){
 			ProduitCommande produitCommande = iterateurCommande.next();
-			Iterator<Produit> iterateurProduits = catalogue.iterator();
-			while(iterateurProduits.hasNext()){
-				Produit produit = iterateurProduits.next();
+			Iterator<Produit> iterateurCatalogue = catalogue.iterator();
+			while(iterateurCatalogue.hasNext()){
+				Produit produit = iterateurCatalogue.next();
 				if(produit.getId() == produitCommande.getNumeroProduit()){
-					int nouvelleQuantite = produit.getQuantiteDisponible()
-							- produitCommande.getQuantiteCommandee();
+					int nouvelleQuantite = produit.getQuantiteDisponible() - produitCommande.getQuantiteCommandee();
 					produit.setQuantiteDisponible(nouvelleQuantite);
 				}
 			}
@@ -124,16 +104,52 @@ public class Magasin extends Observable implements MagasinCommande{
 	 * Parcours le catalogue et appelle le fournisseur pour s'approvisionner
 	 */
 	private void seFournir(){
-		Collection<Produit> listeProduit=new ArrayList<Produit>();
-		Iterator<Produit> iterateurProduits= catalogue.iterator();
-		while(iterateurProduits.hasNext()){
-			Produit produit = iterateurProduits.next();
-			if(produit.getQuantiteDisponible()<5){
+		Collection<Produit> listeProduit = new ArrayList<Produit>();
+		Iterator<Produit> iterateurCatalogue = catalogue.iterator();
+		while(iterateurCatalogue.hasNext()){
+			Produit produit = iterateurCatalogue.next();
+			if(produit.getQuantiteDisponible() < 5){
 				listeProduit.add(produit);
 			}
 		}
 		if(!listeProduit.isEmpty()){
-			this.fournisseur.livrer(listeProduit);
+			this.fournisseur.approvisionner(listeProduit);
 		}
+	}
+	
+	public void setFournisseur(Fournisseur fournisseur, Map<String, ?> ref){
+		this.fournisseur = fournisseur;
+		
+		// On initialise le catalogue avec le stock du fournisseur
+		for(Produit produitFournisseur : fournisseur.getStock()){
+			this.catalogue.add(new Produit(produitFournisseur.getId(),
+										   produitFournisseur.getLibelle(),
+										   produitFournisseur.getPrix(),
+										   produitFournisseur.getQuantiteDisponible()));
+		}
+		
+	}
+
+	public void unsetFournisseur(Fournisseur fournisseur){
+		this.fournisseur = null;
+	}
+
+	public void setClients(Client client, Map<String, ?> ref){
+		// Dès qu'un service client est trouvé on le fait passer commande
+		this.clients.add(client);
+		Collection<ProduitCommande> commande = client.getCommande(catalogue);
+		try {
+			passerCommande(commande);
+			for(ProduitCommande entree : commande){
+				commandesRealisees.add(client.toString() + " : " + entree.toString());
+			}
+		} catch (ProduitIndisponibleException e) {
+			System.out.println("Un des produits commandés est indisponible");			
+		}
+	}
+
+	public void unsetClients(Client client){
+		System.out.println("Removed client");
+		this.clients.remove(client);
 	}
 }

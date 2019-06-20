@@ -1,0 +1,9 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+public interface Fournisseur {
+	Collection<Produit> getStock();
+	void approvisionner(Collection<Produit> produits);
+	void stockChange();
+}

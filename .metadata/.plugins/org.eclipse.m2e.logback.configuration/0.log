@@ -179,3 +179,4 @@ Caused by: java.net.UnknownHostException: download.eclipse.org
 2019-06-20 13:31:08,614 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @6256634ms
 2019-06-20 14:22:56,970 [Stop Help Server] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@8ea159{HTTP/1.1}{127.0.0.1:0}
 2019-06-20 14:22:56,977 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@8b237{/help,null,UNAVAILABLE}
+2019-06-20 17:49:36,120 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.

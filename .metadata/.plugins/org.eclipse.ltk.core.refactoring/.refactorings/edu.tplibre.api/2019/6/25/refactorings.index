@@ -1,3 +1,4 @@
 1560783897611	Rename type 'ProduitEIndisponibleException'
 1561027445209	Rename type 'Fournisseur'
 1561027470740	Rename type 'FournisseurMagasin'
+1561045988729	Rename method 'livrer'

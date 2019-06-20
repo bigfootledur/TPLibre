@@ -1,0 +1,12 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * 
+ * @author BigFootleterrible
+ *
+ */
+public interface Stock {
+	Collection<Produit> getProduitsEnStock();
+}

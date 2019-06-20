@@ -1,0 +1,28 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * Approvisionne un catalogue de produits
+ */
+public interface Fournisseur {
+	
+	/**
+	 * Renvoie le stock du fournisseur
+	 * @return : le stock du fournisseur
+	 */
+	Collection<Produit> getStock();
+	
+	/**
+	 * Renvoie l'historique des approvisionnements
+	 * @return : l'historique des approvisionnements
+	 */
+	Collection<String> getHistoriqueApprovisionnement();
+	
+	/**
+	 * Augmente la quantité disponible des produits présent dans produits
+	 * @param produits
+	 */
+	void approvisionner(Collection<Produit> produits);
+	void stockChange();
+}

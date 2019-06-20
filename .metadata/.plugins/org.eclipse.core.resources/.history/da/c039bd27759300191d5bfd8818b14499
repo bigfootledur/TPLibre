@@ -1,0 +1,48 @@
+package edu.tplibre.fournisseur;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+
+import edu.tplibre.api.Fournisseur;
+import edu.tplibre.api.Produit;
+import edu.tplibre.api.Stock;
+
+public class StockMagasin extends Thread implements Stock{
+
+	private final int delay = 5000;
+
+	Collection<Produit> produitsEnStock;
+	Fournisseur fournisseur;
+
+	public StockMagasin(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
+		produitsEnStock=new ArrayList<Produit>();
+		produitsEnStock.add(new Produit(1, "cacao", 4.5f, 60));
+		produitsEnStock.add(new Produit(2, "lait", 10.3f, 60));
+
+		this.start();
+	}
+
+	@Override
+	public void run() {
+		Random rand = new Random();
+		while(true){
+			try {
+				sleep(delay);
+				for (Produit produit : produitsEnStock){
+					int quantiteDisponible = produit.getQuantiteDisponible();
+					produit.setQuantiteDisponible(quantiteDisponible + rand.nextInt(10));
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public Collection<Produit> getProduitsEnStock() {
+		return produitsEnStock;
+	}
+
+}

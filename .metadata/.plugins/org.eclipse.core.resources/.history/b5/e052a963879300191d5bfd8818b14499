@@ -1,0 +1,12 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * Représente un client du magasin
+ * @author BigFootleterrible
+ *
+ */
+public interface Client {
+	public Collection<ProduitCommande> getCommande(Collection<Produit> catalogue);
+}

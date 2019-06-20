@@ -1,0 +1,11 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * Représente un stock de produits
+ *
+ */
+public interface Stock {
+	Collection<Produit> getProduitsEnStock();
+}

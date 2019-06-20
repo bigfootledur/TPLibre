@@ -1,0 +1,46 @@
+package edu.tplibre.fournisseur;
+
+import java.util.Collection;
+import java.util.Iterator;
+
+import edu.tplibre.api.Fournisseur;
+import edu.tplibre.api.Produit;
+import java.util.Observable;
+import java.util.Random;
+
+public class FournisseurMagasin extends Observable implements Fournisseur{
+
+	StockMagasin stock;
+	
+	public FournisseurMagasin() {
+		stock = new StockMagasin(this);
+	}
+	
+	@Override
+	public void approvisionner(Collection<Produit> produits) {
+		Iterator<Produit> iterProduits = produits.iterator();
+		while(iterProduits.hasNext()){
+			Produit produit=iterProduits.next();
+			Iterator<Produit> iterCatalogue = stock.getProduitsEnStock().iterator();
+			while(iterCatalogue.hasNext()){
+				Produit produitCatalogue=iterCatalogue.next();
+				if(produit.getId()==produitCatalogue.getId()){
+					Random rand= new Random();
+					int quantiteApprovisionnement = rand.nextInt(produitCatalogue.getQuantiteDisponible());
+					produit.setQuantiteDisponible(quantiteApprovisionnement + produit.getQuantiteDisponible());
+					produitCatalogue.setQuantiteDisponible(produitCatalogue.getQuantiteDisponible() - quantiteApprovisionnement);
+				}
+			}
+		}
+
+	}
+	public void stockChange(){
+		this.setChanged();
+		this.notifyObservers(getStock());
+	}
+	
+	public Collection<Produit> getStock(){
+		return stock.getProduitsEnStock();
+	}
+
+}

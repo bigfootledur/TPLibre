@@ -8,6 +8,10 @@ import edu.tplibre.api.Client;
 import edu.tplibre.api.Produit;
 import edu.tplibre.api.ProduitCommande;
 
+/**
+ * Représente un client qui commande beaucoup de produits
+ *
+ */
 public class ClientGourmand implements Client{
 
 	// Probabilité qu'un client achète un article lorsqu'il feuillette le catalogue 

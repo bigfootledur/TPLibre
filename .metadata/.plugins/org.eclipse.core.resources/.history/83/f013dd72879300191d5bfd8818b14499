@@ -1,0 +1,17 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * Représente un client du magasin
+ *
+ */
+public interface Client {
+	
+	/**
+	 * 
+	 * @param catalogue
+	 * @return
+	 */
+	Collection<ProduitCommande> getCommande(Collection<Produit> catalogue);
+}

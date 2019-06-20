@@ -1,5 +1,9 @@
 package edu.tplibre.api;
 
+/**
+ * Représente un produit
+ *
+ */
 public class Produit {
 	private int id;
 	private String libelle;

@@ -1,0 +1,14 @@
+package edu.tplibre.api;
+
+import java.util.Collection;
+
+/**
+ * 
+ * @author BigFootleterrible
+ *
+ */
+public interface MagasinCommande {
+	Collection<Produit> getCatalogue();
+	Collection<String> getProduitsCommandes();
+	void passerCommande(Collection<ProduitCommande> commande)  throws ProduitIndisponibleException;
+}

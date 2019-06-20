@@ -8,6 +8,10 @@ import edu.tplibre.api.Client;
 import edu.tplibre.api.Produit;
 import edu.tplibre.api.ProduitCommande;
 
+/**
+ * Représente un client qui commande moitié moins de produit que le client gourmand
+ *
+ */
 public class ClientStandard implements Client {
 
 	// Probabilité qu'un client achète un article lorsqu'il feuillette le catalogue 
@@ -23,7 +27,7 @@ public class ClientStandard implements Client {
 		for(Produit produit : catalogue){
 			if (produit.estDisponible(SEUIL_DISPONIBILITE_ARTICLE)){
 				if (rand.nextFloat() < PROBABILITE_ACHAT_ARTICLE){
-					int quantiteDesiree = rand.nextInt((int)produit.getQuantiteDisponible() / 2) + 1;
+					int quantiteDesiree = rand.nextInt(Math.round(produit.getQuantiteDisponible() / 2));
 					commande.add(new ProduitCommande(produit.getId(), quantiteDesiree));
 				}
 			}
