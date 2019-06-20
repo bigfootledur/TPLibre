@@ -17,4 +17,5 @@
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="edu.tplibre.api.ProduitIndisponibleException"/>
 <fullyQualifiedTypeName name="edu.tplibre.api.Fournisseur"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
 </qualifiedTypeNameHistroy>

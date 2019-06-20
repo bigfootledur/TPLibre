@@ -180,3 +180,10 @@ Caused by: java.net.UnknownHostException: download.eclipse.org
 2019-06-20 14:22:56,970 [Stop Help Server] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@8ea159{HTTP/1.1}{127.0.0.1:0}
 2019-06-20 14:22:56,977 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@8b237{/help,null,UNAVAILABLE}
 2019-06-20 17:49:36,120 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is out-of-date. Remote download required.
+2019-06-20 20:44:40,602 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @10904572ms
+2019-06-20 20:44:42,038 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.2.13.v20150730
+2019-06-20 20:44:42,113 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5e8b5c{/help,null,AVAILABLE}
+2019-06-20 20:44:42,150 [Start Help Server] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@1999939{HTTP/1.1}{127.0.0.1:22738}
+2019-06-20 20:44:42,151 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @10906122ms
+2019-06-20 20:51:31,294 [Stop Help Server] INFO  o.e.jetty.server.ServerConnector - Stopped ServerConnector@1999939{HTTP/1.1}{127.0.0.1:0}
+2019-06-20 20:51:31,305 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5e8b5c{/help,null,UNAVAILABLE}

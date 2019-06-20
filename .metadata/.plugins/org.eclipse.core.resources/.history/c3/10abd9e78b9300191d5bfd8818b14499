@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Clientstandard
+Bundle-SymbolicName: edu.tplibre.clientstandard
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: edu.tplibre.api;bundle-version="1.0.0"
+Export-Package: edu.tplibre.clientstandard
+Service-Component: OSGI-INF/edu.tplibre.clientstandard.xml

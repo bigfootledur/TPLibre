@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config date="1561055432211" transient="true" version="3.0">
+<config date="1561056667246" transient="true" version="3.0">
 <site enabled="true" list="TPLibreOSGI/edu.tplibre.clientstandard/,TPLibreOSGI/edu.tplibre.clientgourmand/,TPLibreOSGI/edu.tplibre.fournisseur/,TPLibreOSGI/edu.tplibre.api/,TPLibreOSGI/edu.tplibre.magasin/,TPLibreOSGI/edu.tplibre.ihm/" policy="USER-INCLUDE" updateable="true" url="file:/C:/tp_osgi/workspaces/">
 </site>
 <site enabled="true" list="SCR/org.apache.felix.scr-1.8.2.jar" policy="USER-INCLUDE" updateable="true" url="file:/C:/tp_osgi/felix-framework-4.6.0/">

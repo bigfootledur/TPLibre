@@ -1,7 +1,0 @@
-package edu.tplibre.fournisseur;
-
-import edu.tplibre.api.Fournisseur;
-
-public class FournisseurMagasin implements Fournisseur {
-
-}
